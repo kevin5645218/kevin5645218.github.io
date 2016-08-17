@@ -31,15 +31,18 @@
    $('#calc').click(function(){
      var h   = $('#height').val();
      var w   = $('#weight').val();
-     if(h==''){alert('請輸入身高')}
-     else if(h>2.5){alert('身高請輸入公尺')}
-     else if(w==''){alert('請輸入體重')}
+     var bmi = w/(h*h);
+     if(h==''){alert('請輸入身高')};
+     else if(h>2.5){alert('身高請輸入公尺')};
+     else if(w==''){alert('請輸入體重')};
      else{
-      var bmi = w/(h*h);
       $('#result').val(formatFloat(bmi, 2));
-      $('#height').val('');
-      $('#weight').val('');
      }
+     if    (formatFloat(bmi, 2)<18.5){alert('體重過輕，吃多一點！')};
+     else if(18.5<=formatFloat(bmi, 2)<=24){alert('體重標準，好好維持')};
+     else if(24<=formatFloat(bmi, 2)<=27){alert('輕度肥胖，該運動囉')};
+     else if(27<=formatFloat(bmi, 2)<=30){alert('中度肥胖，有點胖了')};
+     else  (formatFloat(bmi, 2)>=35){alert('重度肥胖，你是豬嗎')};
    });
  });
  function formatFloat(num, pos)
